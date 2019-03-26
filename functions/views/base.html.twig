@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="nojs html css_verticalspacer" lang="fr-FR">
+<head>
+    <!-- ALL DEVICES META INFO -->
+    <meta charset="utf-8">
+    <title>{{ not page_title ? 'Peaks Marvelous Project' : page_title }}</title>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Test Marvel pour Peaks par Julien Arthur DUVIVIER" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:title" content="{{ not page_title ? 'Peaks Marvelous Project' : page_title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://peaks-marvel-duvivier.firebaseapp.com">
+    <meta property="og:image" content="/images/marvel_logo_1920x1080.jpg">
+    <meta property="og:image:alt" content="Logo Marvel">
+    <meta property="og:site_name" content="Peaks Marvel">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:description" content="Test Marvel pour Peaks par Julien Arthur DUVIVIER">
+
+    {% block meta %}{% endblock %}
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <!-- MENU -->
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    <main role="main">
+            {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        {% block footer %}
+            <nav>
+                <p>Data provided by Marvel. © 2014 Marvel</p>
+                <p>https://marvel.com</p>
+            </nav>
+        {% endblock %}
+    </footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
