@@ -19,24 +19,58 @@
     <meta property="og:description" content="Test Marvel pour Peaks par Julien Arthur DUVIVIER">
 
     {% block meta %}{% endblock %}
-    {% block styles %}{% endblock %}
+    {% block styles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style type="text/css">
+            main {
+                min-height: calc(100vh - 4rem);
+            }
+
+            .row {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .col {
+                height: 100%;
+                padding-top: 1rem;
+            }
+        </style>
+    {% endblock %}
 </head>
 <body>
     <!-- MENU -->
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/marvel_logo_1920x1080.jpg" height="30" alt="Marvel">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Tous les personnages</a>
+                    </li>
+            </nav>
+        {% endblock %}
     </header>
     <main role="main">
             {% block content %}{% endblock %}
     </main>
     <footer class="footer">
         {% block footer %}
-            <nav>
-                <p>Data provided by Marvel. © 2014 Marvel</p>
-                <p>https://marvel.com</p>
+            <nav class="navbar navbar-dark bg-dark justify-content-around">
+                <a href="https://marvel.com" class="nav-item text-white">Data provided by Marvel. ©&nbsp;2019&nbsp;Marvel</a>
             </nav>
         {% endblock %}
     </footer>
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% endblock %}
 </body>
 </html>

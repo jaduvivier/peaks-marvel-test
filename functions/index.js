@@ -17,9 +17,13 @@ const cc = require('./controllers/character-controller');
 
 /* Routes */
 
-app.route('/list')
+app.route('/')
     .get( cc.getListPage );
 app.route('/character/:charId/:charName')
     .get( cc.getCharacterPage );
+app.route('/:anythingElse')
+    .get((req, res, next) => {
+        res.redirect('/404.html');
+    });
 
 exports.app = functions.https.onRequest(app);

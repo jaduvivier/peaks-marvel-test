@@ -1,13 +1,32 @@
-{% extends 'base.html .twig' %}
+{% extends 'base.html.twig' %}
 
-{% block meta %}{% endblock meta %}
-
-{% block styles %}{% endblock styles %}
-
-{% block header %}{% endblock header %}
-
-{% block content %}{% endblock content %}
-
-{% block footer %}{% endblock footer %}
-
-{% block scripts %}{% endblock scripts %}
+{% block content %}
+    <div class="container bg-light">
+        <div class="row">
+            <div class="col col-12 text-center">
+                <h1>Test Marvel</h1>
+                <h2>Personnages</h2>
+            </div>
+        </div>
+        <div class="row">
+        {% for character in characters %}
+            <div class="col col-12 col-md-4 col-xl-2">
+                <div class="card text-center">
+                    <img class="card-img-top" src="{{ character.thumbnail.path }}/standard_fantastic.{{ character.thumbnail.extension }}" alt="Character card image cap">
+                    <div class="card-body">
+                        <a href="/character/{{ character.id }}/{{ character.name }}" class="card-title">{{ character.name }}</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col col-12 col-md-4 col-xl-2">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p>Aucun personnage à afficher</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,21 +1,54 @@
+const Request = require('request-promise');
+const md5 = require('md5');
+const api = require('../utils/marvel-api-key'); // Clés d'acc
+
+
 const timestamp = Date.now();
-const apikey = '';
-const apisecret = '';
-const apiurl = 'https://gateway.marvel.com/v1/public/characters';
+let preHash = timestamp + api.private_key + api.public_key;
+let hash = md5(preHash);    // Hachage selon l'agorithme MD5 requis par l'API Marvel
 
-function hashToMd5(textToBeHashed) {
-    // TODO (https://stackoverflow.com/questions/14733374/how-to-generate-md5-file-hash-on-javascript)
-}
+const charUrl = api.base_url + '/v1/public/characters';
+let urlParameter = '?ts=' + timestamp + '&apikey=' + api.public_key + '&hash=' + hash;
 
-let preHash = timestamp + apisecret + apikey;
-let hash = hashToMd5(preHash);
-
+/**
+ * Requests 20 characters, starting from the 100th, from the API.
+ * 
+ * @returns {Promise<Array>} characters - 
+ */
 function getAll() {
-    // TODO: get request at /v1/public/characters then filter (22 starting from 99 (100th))
+    let reqOptions = {
+        uri: charUrl + urlParameter + '&offset=99&limit=20',
+        json: true
+    }
+    return Request(reqOptions)
+        .then((body) => {
+            let characters = body.data.results;
+            return characters;
+        }, (error) => {
+            console.log('[CS] Error (getAll):', error);
+            return Promise.reject(error);
+        });
 }
 exports.getAll = getAll;
 
+/**
+ * Requests a character from the API, giving it its id.
+ * 
+ * @param {String} characterId - Unique ID of the character resource.
+ * @returns {Promise<Object>} character - 
+ */
 function getCharacter(characterId) {
-    // TODO: get request at GET /v1/public/characters/{characterId}
+    let reqOptions = {
+        uri: charUrl + '/' + characterId + urlParameter,
+        json: true
+    }
+    return Request(reqOptions)
+        .then((body) => {
+            let character = body.data.results[0];
+            return character;
+        }, (error) => {
+            console.log('[CS] Error (getCharacter):', error);
+            return Promise.reject(error);
+        });
 }
 exports.getCharacter = getCharacter;
