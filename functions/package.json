@@ -2,6 +2,7 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
+    "test": "mocha --reporter spec",
     "serve": "firebase serve --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
@@ -17,5 +18,9 @@
     "request-promise": "^4.2.4",
     "twig": "^1.13.2"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
 }

@@ -5,6 +5,7 @@ Elle est hébergée sur la plateforme Firebase (Hosting) et exécutée par Fireb
 Le routage est mis en œuvre avec le framework Express.js.
 La communication avec l'API Marvel est effectuée grâce aux module request et request-promise (asynchronicité des requêtes).
 La mise en page de l'application s'appuie sur le framework d'interface Bootstrap 4 (HTML5/CSS3) et les données insérées grâce au module Twig.js.
+Les tests unitaires sont effectués grâce au framework Mocha associé à la librairie Chai.
 
 2. Exécution
 ––––––––––––

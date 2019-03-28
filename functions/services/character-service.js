@@ -34,7 +34,7 @@ exports.getAll = getAll;
 /**
  * Requests a character from the API, giving it its id.
  * 
- * @param {String} characterId - Unique ID of the character resource.
+ * @param {string} characterId - Unique ID of the character resource.
  * @returns {Promise<Object>} character - 
  */
 function getCharacter(characterId) {

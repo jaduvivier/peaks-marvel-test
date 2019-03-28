@@ -8,19 +8,16 @@ const cs = require('../services/character-service');
  * @param {function} next - 
  */
 function getListPage( request, response, next) {
-    console.log(typeof request);
-    console.log(typeof response);
-    console.log(typeof next);
     return cs.getAll()
-    .then((characters) => {
-        console.log('Displaying all characters…');
-        response.render('characters/list.html.twig', {
-            characters: characters
-        });
-    }, (error) => {
-        console.log('[CC] Error (getListPage):', error.message);
-        response.render('error.html.twig', { error });
-    })
+        .then((characters) => {
+            console.log('Displaying all characters…');
+            return response.render('characters/list.html.twig', {
+                characters: characters
+            });
+        }, (error) => {
+            console.log('[CC] Error (getListPage):', error.message);
+            return response.render('error.html.twig', { error });
+        })
 }
 exports.getListPage = getListPage;
 
@@ -34,14 +31,14 @@ exports.getListPage = getListPage;
 function getCharacterPage(request, response, next) {
     let charId = request.params.charId;
     return cs.getCharacter(charId)
-    .then((character) => {
-        console.log(`Displaying ${character.name}…`);
-        response.render('characters/character.html.twig', {
-            character: character
+        .then((character) => {
+            console.log(`Displaying ${character.name}…`);
+            return response.render('characters/character.html.twig', {
+                character: character
+            });
+        }, (error) => {
+            console.log('An error occured (character details):', error.message);
+            return response.render('error.html.twig', { error });
         });
-    }, (error) => {
-        console.log('An error occured (character details):', error.message);
-        response.render('error.html.twig', { error });
-    });
 }
 exports.getCharacterPage = getCharacterPage;
