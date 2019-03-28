@@ -1,6 +1,6 @@
 const Request = require('request-promise');
 const md5 = require('md5');
-const api = require('../utils/marvel-api-key'); // Clés d'acc
+const api = require('../utils/marvel-api-key'); // Clés d'API
 
 
 const timestamp = Date.now();
